@@ -4,8 +4,9 @@
 // but you don't so you're going to write it from scratch:
 
 var stringifyJSON = function(obj) {
+  console.log(obj);
   // your code goes here
-	if (obj) {
+	if (obj !== null && obj !== undefined) {
 	  var str = '';
 	    if (Array.isArray(obj)) {
 	    	str = '[';
@@ -32,15 +33,20 @@ var stringifyJSON = function(obj) {
 	      }
 	      str += '}';
 	    } else if (typeof(obj) === 'string') {
-	    	// str = '"' + obj + '"';
-	    	str = "'" + obj + "'";
+	    	str = '"' + obj + '"';
+	    	// str = "'" + obj + "'";
 	    } else if (typeof(obj) === 'boolean') {
 	    	str = obj.toString();
 	    } else if (typeof(obj) === 'number') {
 	    	str = obj.toString();
 	    }
 	  } else {
-	  	str = 'null';
+	  	if (obj === null) {
+	  	  str = 'null';
+	  	} else if (obj === undefined) {
+	  		// do something
+	  	}
+	  	
 	  }
     return str;
 };
