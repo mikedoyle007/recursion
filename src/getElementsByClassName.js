@@ -8,8 +8,7 @@ var getElementsByClassName = function(className) {
   var elements = [];
   var body = document.body;
   
-  var findChildElementsByClassName = function(element, className) {
-		var childElements;
+  var getElementsByClass = function(element, className) {
     
     if (element.classList !== undefined) {
     	if (element.classList.contains(className) && element !== undefined) {
@@ -21,12 +20,12 @@ var getElementsByClassName = function(className) {
       var children = element.childNodes;
       for (var i = 0; i < children.length; i++) {
         var child = children[i];
-        findChildElementsByClassName(child, className);
+        getElementsByClass(child, className);
       } 
     } 
   };
 
-  findChildElementsByClassName(body, className);
+  getElementsByClass(body, className);
   return elements;
 };
 
